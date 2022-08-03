@@ -14,6 +14,8 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 
+include "gaia/extern/glfw"
+
 project "gaia"
 	location "gaia"
 	kind "ConsoleApp"
