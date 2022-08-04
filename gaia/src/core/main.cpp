@@ -1,3 +1,6 @@
+#include "pch.h"
+#include "config.h"
+
 #include "app.h"
 
 #ifndef ENTRY_POINT
@@ -5,14 +8,14 @@
 int main(int, char**)
 {
 	// Create application
-	auto appconfig = App::Config();
+	auto appconfig = Config();
 	appconfig.m_title = "gaia";
 	appconfig.m_width = 1280;
 	appconfig.m_height = 720;
 	auto app = App(appconfig);
 
 	// Execute application
-	if (app.start())
+	if (!app.start())
 		return -1;
 	app.run();
 	app.end();

@@ -26,6 +26,9 @@ project "gaia"
 
 	targetdir ("build/" .. outputdir .. "-%{prj.name}/bin")
 	objdir ("build/" .. outputdir .. "-%{prj.name}/obj")
+	
+	pchheader "pch.h"
+	pchsource "%{prj.name}/src/pch.cpp"
 
 	files 
 	{ 
@@ -38,7 +41,6 @@ project "gaia"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/extern",
 		"%{includedir.glfw}"
 	}
 	

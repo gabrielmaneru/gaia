@@ -1,10 +1,12 @@
+#include "pch.h"
 #include "window.h"
 
+#include "app.h"
+#include <events/event_dispatcher.h>
 #include <glfw/glfw3.h>
 
-Window::Window(App* app)
+Window::Window(Config& config)
 {
-	auto config = app->m_config;
 	m_title = config.m_title;
 	m_width = config.m_width;
 	m_height = config.m_height;
@@ -18,10 +20,14 @@ bool Window::initialize()
 		return false;
 
 	m_window_handle = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
-	if (m_window_handle != nullptr)
+	if (m_window_handle == nullptr)
 		return false;
 
 	glfwMakeContextCurrent(m_window_handle);
+
+	glfwSetWindowCloseCallback(m_window_handle, [](GLFWwindow*)->void {
+		EventDispatcher::trigger_event(AppTerminationRequestEvent{});
+		});
 	return true;
 }
 
