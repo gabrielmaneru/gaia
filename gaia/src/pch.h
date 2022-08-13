@@ -5,4 +5,11 @@
 
 #include <debug/logger.h>
 
-typedef unsigned u32;
+using u8 = unsigned char;
+using u32 = unsigned int;
+struct urect {
+	u32 x, y;
+	bool operator==(const urect& r)const {
+		return x == r.x && y == r.y;
+	}
+};
