@@ -4,3 +4,6 @@
 [submodule "gaia/extern/spdlog"]
 	path = gaia/extern/spdlog
 	url = https://github.com/gabrielmaneru/spdlog-premake
+[submodule "gaia/extern/glad"]
+	path = gaia/extern/glad
+	url = https://github.com/gabrielmaneru/glad-premake

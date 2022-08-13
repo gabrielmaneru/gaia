@@ -15,9 +15,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 includedir = {}
 includedir["glfw"] = "Gaia/extern/glfw/include"
 includedir["spdlog"] = "Gaia/extern/spdlog/include"
+includedir["glad"] = "Gaia/extern/glad/include"
 
 include "gaia/extern/glfw"
 include "gaia/extern/spdlog"
+include "gaia/extern/glad"
 
 project "gaia"
 	location "gaia"
@@ -44,13 +46,15 @@ project "gaia"
 	{
 		"%{prj.name}/src",
 		"%{includedir.glfw}",
-		"%{includedir.spdlog}"
+		"%{includedir.spdlog}",
+		"%{includedir.glad}"
 	}
 	
 	links 
 	{
 		"glfw",
-		"spdlog"
+		"spdlog",
+		"glad"
 	}
 	
 	filter "system:windows"
