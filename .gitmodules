@@ -1,3 +1,6 @@
 [submodule "gaia/extern/glfw"]
 	path = gaia/extern/glfw
 	url = https://github.com/gabrielmaneru/glfw-premake
+[submodule "gaia/extern/spdlog"]
+	path = gaia/extern/spdlog
+	url = https://github.com/gabrielmaneru/spdlog-premake
