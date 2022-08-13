@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "window.h"
 
-#include "app.h"
+#include <core/app.h>
 #include <events/event_dispatcher.h>
+
 #include <glfw/glfw3.h>
 
 Window::Window(Config& config)
@@ -17,11 +18,17 @@ Window::Window(Config& config)
 bool Window::initialize()
 {
 	if (!glfwInit())
+	{
+		Log_Critical("Failed to initialize GLFW");
 		return false;
+	}
 
 	m_window_handle = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
 	if (m_window_handle == nullptr)
+	{
+		Log_Critical("Failed to create window");
 		return false;
+	}
 
 	glfwMakeContextCurrent(m_window_handle);
 

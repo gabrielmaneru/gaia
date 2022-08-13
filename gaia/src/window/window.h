@@ -1,5 +1,5 @@
 #pragma once
-#include "config.h"
+#include <core/config.h>
 
 struct GLFWwindow;
 class Window
