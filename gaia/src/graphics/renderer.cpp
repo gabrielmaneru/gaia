@@ -1,9 +1,12 @@
 #include "pch.h"
 #include "renderer.h"
 
+#include <utils/obj_loader.h>
+
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
 
+ObjLoader::Result simple_model;
 Renderer::Renderer(Config& config)
 {
 }
@@ -53,6 +56,11 @@ bool Renderer::initialize()
 	Log_Info("Vendor: {0}", (const char*)glGetString(GL_VENDOR));
 	Log_Info("Renderer: {0}", (const char*)glGetString(GL_RENDERER));
 	Log_Info("Version: {0}", (const char*)glGetString(GL_VERSION));
+
+	// Load simple mesh
+	simple_model = ObjLoader::load("content//meshes//suzanne.obj");
+
+	return true;
 }
 
 void Renderer::render()

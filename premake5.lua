@@ -16,10 +16,12 @@ includedir = {}
 includedir["glfw"] = "Gaia/extern/glfw/include"
 includedir["spdlog"] = "Gaia/extern/spdlog/include"
 includedir["glad"] = "Gaia/extern/glad/include"
+includedir["glm"] = "Gaia/extern/glm"
 
 include "gaia/extern/glfw"
 include "gaia/extern/spdlog"
 include "gaia/extern/glad"
+include "gaia/extern/glm"
 
 project "gaia"
 	location "gaia"
@@ -36,9 +38,7 @@ project "gaia"
 
 	files 
 	{ 
-		"%{prj.name}/src/**.h", 
-		"%{prj.name}/src/**.c", 
-		"%{prj.name}/src/**.hpp", 
+		"%{prj.name}/src/**.c",  
 		"%{prj.name}/src/**.cpp" 
 	}
 
@@ -47,14 +47,16 @@ project "gaia"
 		"%{prj.name}/src",
 		"%{includedir.glfw}",
 		"%{includedir.spdlog}",
-		"%{includedir.glad}"
+		"%{includedir.glad}",
+		"%{includedir.glm}"
 	}
 	
 	links 
 	{
 		"glfw",
 		"spdlog",
-		"glad"
+		"glad",
+		"glm"
 	}
 	
 	filter "system:windows"
@@ -63,7 +65,6 @@ project "gaia"
 		{ 
 			"_CRT_SECURE_NO_WARNINGS"
 		}
-		
 
 	filter "configurations:debug"
 		symbols "On"

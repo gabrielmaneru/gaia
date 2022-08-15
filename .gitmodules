@@ -7,3 +7,6 @@
 [submodule "gaia/extern/glad"]
 	path = gaia/extern/glad
 	url = https://github.com/gabrielmaneru/glad-premake
+[submodule "gaia/extern/glm"]
+	path = gaia/extern/glm
+	url = https://github.com/gabrielmaneru/glm-premake

@@ -11,7 +11,7 @@ struct KeyTypedEvent : public iEvent { u32 m_codepoint; };
 struct MousePressedEvent : public iEvent { int m_button; };
 struct MouseReleasedEvent : public iEvent { int m_button; };
 struct MouseScrolledEvent : public iEvent { double m_xOff, m_yOff; };
-struct MouseMovedEvent : public iEvent { float m_x, m_y, m_xOff, m_yOff; };
+struct MouseMovedEvent : public iEvent { double m_x, m_y, m_xOff, m_yOff; };
 
 struct GLFWwindow;
 class Window : public EventListener
