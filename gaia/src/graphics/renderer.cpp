@@ -6,7 +6,6 @@
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
 
-ObjLoader::Result simple_model;
 Renderer::Renderer(Config& config)
 {
 }
@@ -58,12 +57,30 @@ bool Renderer::initialize()
 	Log_Info("Version: {0}", (const char*)glGetString(GL_VERSION));
 
 	// Load simple mesh
-	simple_model = ObjLoader::load("content//meshes//suzanne.obj");
+	m_simple_model = new Model("content//meshes//suzanne.obj");
+
+	// Load debug shader
+	m_debug_shader = new Shader("debug",{
+		"content//shaders//debug.vert",
+		"content//shaders//debug.frag"
+		});
 
 	return true;
 }
 
 void Renderer::render()
 {
+	glClearColor(0.f, 0.f, 0.f, 0.f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	m_debug_shader->bind();
+	m_debug_shader->set_uniform("MVP", mat4{ 1.0f });
+	m_simple_model->draw();
+}
+
+void Renderer::shutdown()
+{
+	delete m_simple_model;
+	delete m_debug_shader;
 }
 

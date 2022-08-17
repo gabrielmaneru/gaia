@@ -41,6 +41,7 @@ void App::run()
 void App::end()
 {
 	Log_Trace("App::End");
+	m_renderer->shutdown();
 	m_window->shutdown();
 }
 

@@ -29,6 +29,7 @@ const ObjLoader::Result ObjLoader::load(const char* filepath)
 	// setting all the mesh data
 	ObjLoader::fill_mesh_data(result, file);
 
+	file.close();
  	return result;
 }
 

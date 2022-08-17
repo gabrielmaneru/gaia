@@ -38,8 +38,8 @@ project "gaia"
 
 	files 
 	{ 
-		"%{prj.name}/src/**.c",  
-		"%{prj.name}/src/**.cpp" 
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
