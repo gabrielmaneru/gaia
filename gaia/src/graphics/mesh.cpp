@@ -55,7 +55,7 @@ void Mesh::load()
 	glBindVertexArray(0);
 }
 
-void Mesh::draw()
+void Mesh::draw()const
 {
 	glBindVertexArray(m_vertex_array_id);
 	glDrawElements(GL_TRIANGLES, (int)m_indices.size(), GL_UNSIGNED_INT, nullptr);

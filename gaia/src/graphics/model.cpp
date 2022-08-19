@@ -1,11 +1,20 @@
 #include "pch.h"
 #include "model.h"
 
-Model::Model(const char* path)
+void Model::draw()const
 {
-	auto result = ObjLoader::load(path);
+	for each (Mesh* mesh in m_meshes)
+	{
+		mesh->draw();
+	}
+}
 
-	Log_Assert(!result.empty(), "Failed to load mesh: {0}", path);
+bool Model::load_internal()
+{
+	auto result = ObjLoader::load(m_path.c_str());
+
+	if (result.empty())
+		return false;
 
 	for each (ObjLoader::Mesh * rawMesh in result)
 	{
@@ -25,21 +34,15 @@ Model::Model(const char* path)
 		mesh->load();
 		m_meshes.push_back(mesh);
 	}
+	return true;
 }
 
-Model::~Model()
+bool Model::unload_internal()
 {
 	for each (Mesh * mesh in m_meshes)
 	{
 		delete mesh;
 	}
 	m_meshes.clear();
-}
-
-void Model::draw()
-{
-	for each (Mesh* mesh in m_meshes)
-	{
-		mesh->draw();
-	}
+	return true;
 }

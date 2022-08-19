@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "renderer.h"
 
+#include <resources/resource_manager.h>
 #include <utils/obj_loader.h>
 
 #include <glad/glad.h>
@@ -57,7 +58,9 @@ bool Renderer::initialize()
 	Log_Info("Version: {0}", (const char*)glGetString(GL_VERSION));
 
 	// Load simple mesh
-	m_simple_model = new Model("content//meshes//suzanne.obj");
+	
+	m_simple_model = ResourceManager::get<Model>("suzanne");
+	m_simple_model->load_resource();
 
 	// Load debug shader
 	m_debug_shader = new Shader("debug",{
@@ -80,7 +83,6 @@ void Renderer::render()
 
 void Renderer::shutdown()
 {
-	delete m_simple_model;
 	delete m_debug_shader;
 }
 

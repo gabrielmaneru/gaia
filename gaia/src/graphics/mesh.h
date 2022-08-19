@@ -7,7 +7,7 @@ public:
 	Mesh(u32 vertex_count);
 	~Mesh();
 	void load();
-	void draw();
+	void draw()const;
 
 	std::vector<u32> m_indices;
 	std::vector<vec3> m_position;

@@ -20,7 +20,7 @@ public:
 
 private:
 	void compile(const std::unordered_map<ShaderType, std::string>& sources);
-	static ShaderType get_type(const char* extension);
+	static ShaderType get_type(std::string extension);
 
 	u32 m_id;
 	const char* m_name;

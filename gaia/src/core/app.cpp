@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "app.h"
 
+#include <resources/resource_manager.h>
 #include <window/window.h>
 #include <graphics/renderer.h>
 
@@ -8,11 +9,17 @@ App::App(Config& config)
 	: m_running(true)
 {
 	Logger::create();
+	ResourceManager::initialize();
 
 	this->register_event(*this, &App::on_app_termination_request);
 
 	m_window = std::make_shared<Window>(config);
 	m_renderer = std::make_shared<Renderer>(config);
+}
+
+App::~App()
+{
+	ResourceManager::clear();
 }
 
 bool App::start()

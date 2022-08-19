@@ -4,6 +4,8 @@
 #include <memory>
 #include <map>
 #include <fstream>
+#include <iostream>
+#include <type_traits>
 
 #include <debug/logger.h>
 
@@ -23,6 +25,10 @@ struct urect {
 		return x == r.x && y == r.y;
 	}
 };
+template<typename T>
+using unique = std::unique_ptr<T>;
+template<typename T>
+using shared = std::shared_ptr<T>;
 
 using vec2 = glm::vec2;
 using vec3 = glm::vec3;

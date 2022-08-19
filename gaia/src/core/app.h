@@ -12,6 +12,7 @@ class App : public EventListener
 {
 public:
 	App(Config& config);
+	~App();
 	bool start();
 	void run();
 	void end();
@@ -21,6 +22,6 @@ private:
 	bool m_running;
 
 	// Modules
-	std::shared_ptr<Window> m_window;
-	std::shared_ptr<Renderer> m_renderer;
+	shared<Window> m_window;
+	shared<Renderer> m_renderer;
 };

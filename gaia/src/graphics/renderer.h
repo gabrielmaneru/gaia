@@ -13,6 +13,6 @@ public:
 	void shutdown();
 
 private:
-	Model* m_simple_model{ nullptr };
+	shared<Model> m_simple_model{ nullptr };
 	Shader* m_debug_shader{ nullptr };
 };

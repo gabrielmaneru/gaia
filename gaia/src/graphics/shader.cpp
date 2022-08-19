@@ -35,8 +35,7 @@ void Shader::reload()
 	for each (const char* path in m_paths)
 	{
 		// Get Type from extension
-		const char* extension = get_extension_from_path(path);
-		ShaderType type = get_type(extension);
+		ShaderType type = get_type(get_extension_from_path(path));
 
 		// Read file content
 		std::string file_content = read_file_into_string(path);
@@ -171,17 +170,17 @@ void Shader::compile(const std::unordered_map<ShaderType, std::string>& sources)
 	m_id = program_id;
 }
 
-ShaderType Shader::get_type(const char* extension)
+ShaderType Shader::get_type(std::string extension)
 {
-	if (strcmp(extension, "frag") == 0)
+	if (strcmp(extension.data(), "frag") == 0)
 		return ShaderType::frag;
-	if (strcmp(extension, "vert") == 0)
+	if (strcmp(extension.data(), "vert") == 0)
 		return ShaderType::vert;
-	if (strcmp(extension, "geom") == 0)
+	if (strcmp(extension.data(), "geom") == 0)
 		return ShaderType::geom;
-	if (strcmp(extension, "tese") == 0)
+	if (strcmp(extension.data(), "tese") == 0)
 		return ShaderType::tese;
-	if (strcmp(extension, "tesc") == 0)
+	if (strcmp(extension.data(), "tesc") == 0)
 		return ShaderType::tesc;
 
 	Log_Assert(false, "Unknown shader type with extension: {0}", extension);
